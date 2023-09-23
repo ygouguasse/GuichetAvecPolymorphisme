@@ -69,6 +69,7 @@
             rdoEpargne.TabIndex = 3;
             rdoEpargne.Text = "Épargne";
             rdoEpargne.UseVisualStyleBackColor = true;
+            rdoEpargne.CheckedChanged += rdoEpargne_CheckedChanged;
             // 
             // rdoCheque
             // 
@@ -81,6 +82,7 @@
             rdoCheque.TabStop = true;
             rdoCheque.Text = "Chèque";
             rdoCheque.UseVisualStyleBackColor = true;
+            rdoCheque.CheckedChanged += rdoCheque_CheckedChanged;
             // 
             // numMontant
             // 
@@ -114,6 +116,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "FormDepot";
             Text = "Dépôt";
+            FormClosed += FormDepot_FormClosed;
             grpComptes.ResumeLayout(false);
             grpComptes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numMontant).EndInit();

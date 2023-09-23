@@ -147,6 +147,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "FormRetrait";
             Text = "Retrait";
+            FormClosed += FormRetrait_FormClosed;
             ((System.ComponentModel.ISupportInitialize)numRetraitAutre).EndInit();
             ResumeLayout(false);
         }

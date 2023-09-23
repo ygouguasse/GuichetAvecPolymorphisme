@@ -5,31 +5,55 @@ namespace guichet
 {
     public partial class FormConnexion : Form
     {
-        ControleurGuichet _controleurGuichet = new ControleurGuichet();
+        ControleurConnexion _controleurConnexion = new ControleurConnexion();
 
         public FormConnexion()
         {
             InitializeComponent();
-            InitialiserChamp();
+            InitialiserChamps();
+            AbonnerEvenements();
         }
 
-        private void InitialiserChamp()
+        private void AbonnerEvenements()
+        {
+            _controleurConnexion.ConnexionInvalide += ControleurGuichet_ConnexionInvalide;
+            _controleurConnexion.ConnexionValide += ControleurGuichet_ConnexionValide;
+        }
+
+        private void ControleurGuichet_ConnexionValide(object? sender, EventArgs e)
+        {
+            AfficherMenu();
+        }
+
+        private void ControleurGuichet_ConnexionInvalide(object? sender, EventArgs e)
+        {
+            AfficherMessageIdentifiantsInvalides();
+        }
+
+        private void InitialiserChamps()
         {
             txtNip.Text = "";
-            numNumeroCarte.Value = numNumeroCarte.Minimum;
+            txtNumeroCarte.Text = "";
         }
 
         private void AfficherMenu()
         {
-            FormMenu formMenu = new FormMenu(_controleurGuichet);
+            FormMenu formMenu = new FormMenu(_controleurConnexion.UtilisateurConnecte);
             formMenu.Show(this);
             Hide();
-            InitialiserChamp();
+            InitialiserChamps();
+        }
+
+        private void AfficherMessageIdentifiantsInvalides()
+        {
+            MessageBox.Show("Identifiants invalides.");
         }
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            AfficherMenu();
+            int numeroCarte = Convert.ToInt32(txtNumeroCarte.Text);
+            int nip = Convert.ToInt32(txtNip.Text);
+            _controleurConnexion.Connecter(numeroCarte, nip);
         }
     }
 }

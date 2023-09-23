@@ -32,9 +32,8 @@
             lblNumeroCarte = new Label();
             lblNip = new Label();
             btnConnexion = new Button();
-            numNumeroCarte = new NumericUpDown();
             txtNip = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)numNumeroCarte).BeginInit();
+            txtNumeroCarte = new TextBox();
             SuspendLayout();
             // 
             // lblTitre
@@ -43,31 +42,31 @@
             lblTitre.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
             lblTitre.Location = new Point(12, 9);
             lblTitre.Name = "lblTitre";
-            lblTitre.Size = new Size(254, 86);
+            lblTitre.Size = new Size(378, 128);
             lblTitre.TabIndex = 0;
             lblTitre.Text = "Guichet";
             // 
             // lblNumeroCarte
             // 
             lblNumeroCarte.AutoSize = true;
-            lblNumeroCarte.Location = new Point(53, 95);
+            lblNumeroCarte.Location = new Point(12, 137);
             lblNumeroCarte.Name = "lblNumeroCarte";
-            lblNumeroCarte.Size = new Size(154, 25);
+            lblNumeroCarte.Size = new Size(227, 38);
             lblNumeroCarte.TabIndex = 1;
             lblNumeroCarte.Text = "Numéro de carte";
             // 
             // lblNip
             // 
             lblNip.AutoSize = true;
-            lblNip.Location = new Point(53, 158);
+            lblNip.Location = new Point(12, 226);
             lblNip.Name = "lblNip";
-            lblNip.Size = new Size(42, 25);
+            lblNip.Size = new Size(61, 38);
             lblNip.TabIndex = 2;
             lblNip.Text = "NIP";
             // 
             // btnConnexion
             // 
-            btnConnexion.Location = new Point(12, 224);
+            btnConnexion.Location = new Point(65, 318);
             btnConnexion.Name = "btnConnexion";
             btnConnexion.Size = new Size(254, 72);
             btnConnexion.TabIndex = 5;
@@ -75,31 +74,28 @@
             btnConnexion.UseVisualStyleBackColor = true;
             btnConnexion.Click += btnConnexion_Click;
             // 
-            // numNumeroCarte
-            // 
-            numNumeroCarte.Location = new Point(53, 123);
-            numNumeroCarte.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
-            numNumeroCarte.Minimum = new decimal(new int[] { 11111, 0, 0, 0 });
-            numNumeroCarte.Name = "numNumeroCarte";
-            numNumeroCarte.Size = new Size(154, 32);
-            numNumeroCarte.TabIndex = 6;
-            numNumeroCarte.Value = new decimal(new int[] { 11111, 0, 0, 0 });
-            // 
             // txtNip
             // 
-            txtNip.Location = new Point(53, 186);
+            txtNip.Location = new Point(12, 267);
             txtNip.Name = "txtNip";
             txtNip.PasswordChar = '*';
-            txtNip.Size = new Size(154, 32);
+            txtNip.Size = new Size(378, 45);
             txtNip.TabIndex = 7;
+            // 
+            // txtNumeroCarte
+            // 
+            txtNumeroCarte.Location = new Point(12, 178);
+            txtNumeroCarte.Name = "txtNumeroCarte";
+            txtNumeroCarte.Size = new Size(378, 45);
+            txtNumeroCarte.TabIndex = 8;
             // 
             // FormConnexion
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleDimensions = new SizeF(15F, 38F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(279, 304);
+            ClientSize = new Size(402, 405);
+            Controls.Add(txtNumeroCarte);
             Controls.Add(txtNip);
-            Controls.Add(numNumeroCarte);
             Controls.Add(btnConnexion);
             Controls.Add(lblNip);
             Controls.Add(lblNumeroCarte);
@@ -108,7 +104,6 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "FormConnexion";
             Text = "Connexion";
-            ((System.ComponentModel.ISupportInitialize)numNumeroCarte).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,7 +114,7 @@
         private Label lblNumeroCarte;
         private Label lblNip;
         private Button btnConnexion;
-        private NumericUpDown numNumeroCarte;
         private TextBox txtNip;
+        private TextBox txtNumeroCarte;
     }
 }

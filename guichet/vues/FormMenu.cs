@@ -1,4 +1,5 @@
 ﻿using guichet.controleurs;
+using guichet.modeles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,12 @@ namespace guichet.vues
 {
     public partial class FormMenu : Form
     {
-        private ControleurGuichet _controleurGuichet;
+        private ControleurMenu _controleurMenu;
 
-        public FormMenu(ControleurGuichet controleurGuichet)
+        public FormMenu(Utilisateur utilisateur)
         {
             InitializeComponent();
-            _controleurGuichet = controleurGuichet;
+            _controleurMenu = new ControleurMenu(utilisateur);
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -33,13 +34,13 @@ namespace guichet.vues
 
         private void btnDepot_Click(object sender, EventArgs e)
         {
-            FormDepot formDepot = new FormDepot(_controleurGuichet);
+            FormDepot formDepot = new FormDepot(_controleurMenu.Utilisateur);
             formDepot.ShowDialog();
         }
 
         private void btnRetrait_Click(object sender, EventArgs e)
         {
-            FormRetrait formRetrait = new FormRetrait(_controleurGuichet);
+            FormRetrait formRetrait = new FormRetrait(_controleurMenu.Utilisateur);
             formRetrait.ShowDialog();
         }
     }
