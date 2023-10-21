@@ -25,5 +25,10 @@ namespace guichet.modeles.comptes
             Solde += montant;
             InvoquerDepotEffectue(transaction);
         }
+
+        public override string? ToString()
+        {
+            return "Compte Epargne, Votre solde : " + Solde.ToString();
+        }
     }
 }

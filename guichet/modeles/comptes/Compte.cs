@@ -85,6 +85,8 @@ namespace guichet.modeles.comptes
         {
             RetraitErreur?.Invoke(this, new MessageEventArgs(message));
         }
+
+        
     }
 
     public class TransactionEventArgs: EventArgs

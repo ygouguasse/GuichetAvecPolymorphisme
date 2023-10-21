@@ -58,5 +58,11 @@ namespace guichet.modeles.comptes
             Solde -= montant;
             InvoquerRetraitEffectue(transaction);
         }
+
+
+        public override string? ToString()
+        {
+            return "Compte cheque, Votre solde : " + Solde.ToString();
+        }
     }
 }

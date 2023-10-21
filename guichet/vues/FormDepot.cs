@@ -18,13 +18,21 @@ namespace guichet.vues
 
         private void AbonnerEvenements()
         {
-            _controleurDepot.Utilisateur.CompteCheque.DepotEffectue += Compte_DepotEffectue;
-            _controleurDepot.Utilisateur.CompteCheque.DepotErreur += Compte_DepotErreur;
 
-            if (_controleurDepot.Utilisateur.CompteEpargne is null) { return; }
+            foreach (Compte compte in _controleurDepot.Utilisateur.Comptes)
+            {
+                compte.DepotEffectue += Compte_DepotEffectue; 
+                compte.DepotErreur += Compte_DepotErreur;
+            }
 
-            _controleurDepot.Utilisateur.CompteEpargne.DepotEffectue += Compte_DepotEffectue;
-            _controleurDepot.Utilisateur.CompteEpargne.DepotErreur += Compte_DepotErreur;
+
+            //_controleurDepot.Utilisateur.CompteCheque.DepotEffectue += Compte_DepotEffectue;
+           // _controleurDepot.Utilisateur.CompteCheque.DepotErreur += Compte_DepotErreur;
+
+           // if (_controleurDepot.Utilisateur.CompteEpargne is null) { return; }
+
+           // _controleurDepot.Utilisateur.CompteEpargne.DepotEffectue += Compte_DepotEffectue;
+          //  _controleurDepot.Utilisateur.CompteEpargne.DepotErreur += Compte_DepotErreur;
         }
 
         private void FormDepot_FormClosed(object sender, FormClosedEventArgs e)
@@ -36,13 +44,23 @@ namespace guichet.vues
         {
             // Si on ne se désabonne pas, ces évènements seront appelés même après que la Form
             // ait été Close();.
-            _controleurDepot.Utilisateur.CompteCheque.DepotEffectue -= Compte_DepotEffectue;
+
+
+            foreach (Compte compte in _controleurDepot.Utilisateur.Comptes)
+            {
+                compte.DepotEffectue -= Compte_DepotEffectue;
+                compte.DepotErreur -= Compte_DepotErreur;
+            }
+
+
+
+        /*    _controleurDepot.Utilisateur.CompteCheque.DepotEffectue -= Compte_DepotEffectue;
             _controleurDepot.Utilisateur.CompteCheque.DepotErreur -= Compte_DepotErreur;
 
             if (_controleurDepot.Utilisateur.CompteEpargne is null) { return; }
 
             _controleurDepot.Utilisateur.CompteEpargne.DepotEffectue -= Compte_DepotEffectue;
-            _controleurDepot.Utilisateur.CompteEpargne.DepotErreur -= Compte_DepotErreur;
+            _controleurDepot.Utilisateur.CompteEpargne.DepotErreur -= Compte_DepotErreur;*/
         }
 
         private void Compte_DepotErreur(object? sender, MessageEventArgs e)
@@ -58,14 +76,20 @@ namespace guichet.vues
 
         private void InitialiserChamps()
         {
-            rdoCheque.Checked = _controleurDepot.CompteSelectionne == modeles.comptes.TypeCompte.CompteCheque;
-            rdoEpargne.Checked = _controleurDepot.CompteSelectionne == modeles.comptes.TypeCompte.CompteEpargne;
-            numMontant.Value = 0;
+            /*  rdoCheque.Checked = _controleurDepot.CompteSelectionne == modeles.comptes.TypeCompte.CompteCheque;
+              rdoEpargne.Checked = _controleurDepot.CompteSelectionne == modeles.comptes.TypeCompte.CompteEpargne;
+              numMontant.Value = 0;
 
-            if (_controleurDepot.Utilisateur.CompteEpargne is null)
+              if (_controleurDepot.Utilisateur.CompteEpargne is null)
+              {
+                  rdoEpargne.Enabled = false;
+              }*/
+            foreach (Compte item in _controleurDepot.Utilisateur.Comptes)
             {
-                rdoEpargne.Enabled = false;
+                listBox1.Items.Add(item);
+
             }
+
         }
 
         private void btnDeposer_Click(object sender, EventArgs e)
@@ -87,6 +111,11 @@ namespace guichet.vues
             {
                 _controleurDepot.SelectionnerCompteEpargne();
             }
+        }
+
+        private void FormDepot_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
