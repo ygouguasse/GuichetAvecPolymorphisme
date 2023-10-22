@@ -66,6 +66,7 @@ namespace guichet.vues
         private void Compte_DepotErreur(object? sender, MessageEventArgs e)
         {
             MessageBox.Show(e.Message);
+
         }
 
         private void Compte_DepotEffectue(object? sender, TransactionEventArgs e)
@@ -94,23 +95,43 @@ namespace guichet.vues
 
         private void btnDeposer_Click(object sender, EventArgs e)
         {
-            _controleurDepot.Deposer(numMontant.Value);
+            if (listBox1.SelectedIndex!=-1)
+            {
+                Compte compte = (Compte)listBox1.SelectedItem;
+
+                if (compte != null)
+                {
+
+                    _controleurDepot.SelectionnerCompte(compte);
+
+                    _controleurDepot.Deposer(numMontant.Value);
+
+                    return;
+
+                    
+
+                }
+
+
+            }
+
+          //  _controleurDepot.Deposer(numMontant.Value);
         }
 
         private void rdoCheque_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoCheque.Checked)
+           /* if (rdoCheque.Checked)
             {
                 _controleurDepot.SelectionnerCompteCheque();
-            }
+            }*/
         }
 
         private void rdoEpargne_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoEpargne.Checked)
+           /* if (rdoEpargne.Checked)
             {
                 _controleurDepot.SelectionnerCompteEpargne();
-            }
+            }*/
         }
 
         private void FormDepot_Load(object sender, EventArgs e)
